@@ -1,4 +1,6 @@
 import openpyxl
+import torch
+import torch.nn.functional as F
 
 def append_experiment_result(file_path, experiment_data):
     try:
@@ -29,4 +31,21 @@ def append_experiment_result(file_path, experiment_data):
         sheet.cell(row=last_row + index, column=7, value=result['mAcc'])
 
     workbook.save(file_path)
+
+def calculate_normalized_entropy(activation):
+    # Reshape the activation tensor
+    b, l, d = activation.shape   # layer, length, dimensinality
+    reshaped_activation = activation.view(b, l*d).double()
+
+    # Flatten and calculate probabilities
+    probabilities = F.softmax(reshaped_activation, dim=1)
+
+    # Calculate entropy
+    entropy = -torch.sum(probabilities * torch.log2(probabilities), dim=1)
+
+    # Normalize entropy
+    max_entropy = torch.log2(torch.tensor(probabilities.size(1), dtype=torch.double))
+    normalized_entropy = entropy / max_entropy
+
+    return normalized_entropy
 
