@@ -99,10 +99,12 @@ We provide the comparison results (in Appendix) on five datasets without backgro
 
 ```
 @inproceedings{lan2024clearclip,
-      title={ClearCLIP: Decomposing CLIP Representations for Dense Vision-Language Inference}, 
-      author={Mengcheng Lan and Chaofeng Chen and Yiping Ke and Xinjiang Wang and Litong Feng and Wayne Zhang},
-      booktitle={ECCV},
-      year={2024},
+  title={Clearclip: Decomposing clip representations for dense vision-language inference},
+  author={Lan, Mengcheng and Chen, Chaofeng and Ke, Yiping and Wang, Xinjiang and Feng, Litong and Zhang, Wayne},
+  booktitle={European Conference on Computer Vision},
+  pages={143--160},
+  year={2024},
+  organization={Springer}
 }
 ```
 
